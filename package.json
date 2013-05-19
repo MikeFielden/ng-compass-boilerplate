@@ -1,0 +1,26 @@
+{
+  "author": "Mike Fielden",
+  "name": "ng-sass-boilerplate",
+  "version": "0.0.1",
+  "homepage": "https://github.com/MikeFielden/ng-sass-boilerplate",
+  
+  "bugs": "https://github.com/MikeFielden/ng-sass-boilerplate/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MikeFielden/ng-sass-boilerplate.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "0.3.0",
+    "grunt-contrib-watch": "0.4.3",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.5.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-karma": "~0.4.4",
+    "grunt-ngmin": "0.0.2"
+  }
+}
