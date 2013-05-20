@@ -1,0 +1,280 @@
+An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
+
+***
+
+## Quick Start
+
+Install Node.js and then:
+
+Install compass
+  http://compass-style.org/install/
+  $ gem update --system
+  $ gem install compass
+
+```sh
+$ git clone git@github.com:MikeFielden/ng-compass-boilerplate.git
+$ cd ng-compass-boilerplate
+$ sudo npm -g install grunt-cli karma bower
+$ npm install
+$ bower install
+$ grunt watch
+```
+
+Happy hacking!
+
+## Purpose
+
+`ngCompassBoilerplate` is designed to make life easy by providing a basic framework
+with which to kickstart AngularJS projects. It contains a best-practice
+directory structure to ensure code reusability and maximum scalability.
+ngCompassBoilerplate also comes prepackaged with the most popular design frameworks
+around: 
+[Twitter Bootstrap](http://getbootstrap.com)
+[UIBootstrap](http://angular-ui.github.com/bootstrap)
+[Compass](http://compass-stype.org).  
+Lastly, it contains a sophisticated Grunt-based build system to ensure maximum productivity.  All you have to do is clone it and start coding!
+
+## Philosophy
+
+The principal goal of `ngCompassBoilerplate` is to set projects up for long-term
+success.  So `ngCompassBoilerplate` tries to follow best practices everywhere it can.
+These are:
+
+- Properly orchestrated modules to encourage drag-and-drop component re-use.
+- Tests exist alongside the component they are testing, no separate `test`
+  directory required. The build process should be sophisticated enough to handle
+  this.
+- Speaking of which, the build system should work automagically, without
+  involvement from the developer. It should do what needs to be done, while
+  staying out of the way.  Components should end up tested, linted, compiled,
+  and minified, ready for use in a production environment.
+- Integration with popular tools (Bower only for now, hopefully others in the
+  future).
+- *Engourages* test-driven development. It's the only way to code.
+- A directory structure that is cogent, meaningful to new team members, and
+  supporting of the above points.
+- Well-documented, to show new developers *why* things are set up the way they
+  are.
+- It should be responsive to evidence. Community feedback is therefore crucial
+  to the success of `ngCompassBoilerplate`.
+
+But `ngCompassBoilerplate` is not an example of an AngularJS app: this is a
+kickstarter. If you're looking for an example of what a complete, non-trivial
+AngularJS app that does something real looks like, complete with a REST backend
+and authentication and authorization, then take a look at
+[`angular-app`](http://github.com/angular-app/angular-app), which does just
+that - and does it well.
+
+## Learn
+
+### Overall Directory Structure
+
+At a high level, the structure looks roughly like this:
+
+```
+ng-boilerplate/
+  |- build/
+  |  |- angular/
+  |- grunt-tasks/
+  |- karma/
+  |- src/
+  |  |- app/
+  |  |  |- <app logic>
+  |  |- assets/
+  |  |  |- <static files>
+  |  |- components/
+  |  |  |- <reusable code & external libs>
+  |  |- sass/
+  |  |  |- main.scss
+  |- vendor/
+  |  |- angular-bootstrap/
+  |  |- bootstrap/
+  |  |- placeholders/
+  |- Gruntfile.js
+  |- module.prefix
+  |- module.suffix
+  |- package.json
+```
+
+
+What follows is a brief description of each entry, but all directories contain
+their own `README.md` file with additional documentation, so browse around to
+learn more.
+
+- `build/` - files needed to make everything happen, but *not* libraries our
+  application uses. [Read more &raquo;](build/README.md)
+- `grunt-tasks/` - custom scripts for Grunt.
+- `karma` - test configuration.
+- `src/` - our application sources. [Read more &raquo;](src/README.md)
+- `vendor/` - third-party libraries. [Bower](http://bower.io) will install
+  packages here. Anything added to this directory will need to be manually added
+  to `Gruntfile.js` and `karma/karma-unit.js` to be picked up by the build
+  system.
+- `.bowerrc` - the Bower configuration file. This tells Bower to install
+  components into the `vendor/` directory.
+- `bower.js` - this is our project configuration for Bower and it contains the
+  list of Bower dependencies we need.
+- `Gruntfile.js` - our build script; see "The Build System" below.
+- `module.prefix` and `module.suffix` - our compiled application script is
+  wrapped in these, which by default are used to place the application inside a
+  self-executing anonymous function to ensure no clashes with other libraries.
+- `package.json` - metadata about the app, used by NPM and our build script. Our
+  NPM dependencies are listed here.
+
+### Detailed Installation
+
+`ngCompassBoilerplate` uses [Grunt](http://gruntjs.org) as its build system, so
+[Node.js](http://nodejs.org) is required. Also, Grunt by default no longer comes
+with a command-line utility and Karma and Bower must end up in your global path
+for the build system to find it, so they must be installed independently. Once
+you have Node.js installed, you can simply use `npm` to make it all happen:
+
+```sh
+$ npm -g install grunt-cli karma bower
+```
+
+If you're on Linux (like I am) then throw `sudo` in front of that command.  If
+you're on Windows, you're on your own.
+
+Next, you can either clone this repository using Git, download it as a zip file
+from GitHub, or merge the branch into your existing repository. Assuming you're
+starting from scratch, simply clone this repository using git:
+
+```sh
+$ git clone git@github.com:MikeFielden/ng-compass-boilerplate.git my-project-name
+$ cd my-project-name
+```
+
+And then install the remaining build dependencies locally:
+
+```sh
+$ npm install
+```
+
+This will read the `dependencies` (empty by default) and the `devDependencies`
+(which contains our build requirements) from `package.json` and install
+everything needed into a folder called `node_modules/`.
+
+Twitter Bootstrap and AngularUI Bootstrap are Bower packages listed in
+`bower.js`. Since they are already listed, simply run this to install them into
+the `vendor/` directory:
+
+```sh
+$ bower install
+```
+
+In the future, should you want to add a new Bower package to your app, run the
+`install` command:
+
+```sh
+$ bower install package-name --save-dev
+```
+
+The `--save-dev` flag tells Bower to add the package at its current version to
+our project's `bower.js` file so should another developer download our
+application (or we download it from a different computer), we can simply run the
+`bower install` command as above and all our dependencies will be installed for
+us. Neat!
+
+Technically, `ngCompassBoilerplate` is now ready to go.
+
+However, prior to hacking on your application, you will want to modify the
+`package.json` file to contain your project's information. Do not remove any
+items from the `devDependencies` array as all are needed for the build process
+to work.
+
+To ensure your setup works, launch grunt:
+
+```sh
+$ grunt watch
+```
+
+The built files are placed in the `dist/` directory.  Open the `dist/index.html`
+file in your browser. Because everything is compiled, no XHR requests are needed
+to retrieve templates, so until this needs to communicate with your backend,
+there is no need to run it from a web server.
+
+`watch` is actually an alias of the `grunt-contrib-watch` that will first run
+the entire build before watching for file changes. With this setup, any file
+that changes will trigger only those build tasks necessary to bring the app up
+to date. For example, when a template file changes, the templates are recompiled
+and concatenated with the rest of the JavaScript files, but when a test/spec
+file changes, only the tests are run. This allows the watch command to complete
+in a fraction of the time it would ordinarily take.
+
+In addition, if you're running a Live Reload plugin in your browser (see below),
+you won't even have to refresh to see the changes! When the `watch` task detects
+a file change, it will reload the page for you. Sweet.
+
+However, a complete build is always available by simply running the default
+task:
+
+```sh
+$ grunt
+```
+
+### The Build System
+
+The best way to learn about the build system is by familiarizing yourself with
+Grunt and then reading through the heavily documented build script,
+`Gruntfile.js`. But what follows in this section is a quick introduction to the
+tasks provided.
+
+The driver of the process is the `delta` multi-task, which watches for file
+changes using `grunt-contrib-watch` and executes one of seven tasks when a file
+changes:
+
+* `delta:gruntfile` - When `Gruntfile.js` changes, this task runs the linter
+  (`jshint`) on that one file.
+* `delta:assets` - When any file within `src/assets/` changes, all asset files
+  are copied to `dist/assets/`.
+* `delta:html` - When `src/index.html`, it is compiled as a Grunt template, so
+  script names, etc., are dynamically replaced with the correct values from
+  `package.json`.
+* `delta:sass` - When any `*.scss` file within `src/` changes, the
+  `src/sass/main.scss` file is linted, compiled, and compressed into
+  `dist/assets/ng-boilerplate.css`.
+* `delta:src` - When any JavaScript file within `src/` that does not end in
+  `.spec.js` changes, all JavaScript sources are linted, all unit tests are run,
+  and the previously-compiled templates are concatenated with them to form the
+  final JavaScript source file (`dist/assets/ng-boilerplate.js`).
+* `delta:tpls` - When any `*.tpl.html` file within `src/` changes, all templates
+  are put into strings in a JavaScript file (technically two, one for
+  `src/components/` and another for `src/app/`) that will add the template to
+  AngularJS's
+  [`$templateCache`](http://docs.angularjs.org/api/ng.$templateCache) so
+  template files are part of the initial JavaScript payload and do not require
+  any future XHR.  The template cache files are then concatenated with the rest
+  of the scripts into the final JavaScript source file
+  (`dist/assets/ng-boilerplate.js`).
+* `delta:unittest` - When any `*.spec.js` file in `src/` changes, the test files
+  are linted and the unit tests are executed.
+
+As covered in the previous section, `grunt watch` will execute a full build
+up-front and then run any of the aforementioned `delta:*` tasks as needed to
+ensure the fastest possible build.
+
+### Live Reload!
+
+`ngCompassBoilerplate` now includes [Live Reload](http://livereload.com/), so you no
+longer have to refresh your page after making changes! You need a Live Reload
+browser plugin for this:
+
+- Chrome - [Chrome Webstore](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+- Firefox - [Download from Live Reload](http://download.livereload.com/2.0.8/LiveReload-2.0.8.xpi)
+- Safari - [Download from Live Reload](http://download.livereload.com/2.0.9/LiveReload-2.0.9.safariextz)
+- Internet Explorer - Surely you jest.
+
+Note that if you're using the Chrome version with `file://` URLs (as is the
+default with `ngCompassBoilerplate`) you need to tell Live Reload to allow it. Go to
+`Menu -> Tools -> Extensions` and check the "Allow access to file URLs" box.
+
+When you load your page, click the Live Reload icon in your toolbar and
+everything should work magically. w00t!
+
+If you'd prefer to not install a browser extension, then you must add the
+following to the end of your `body` tag in `index.html`:
+
+```html
+<script src="http://localhost:35729/livereload.js"></script>
+```

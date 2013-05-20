@@ -1,20 +1,19 @@
 {
   "author": "Mike Fielden",
-  "name": "ng-sass-boilerplate",
+  "name": "ng-compass-boilerplate",
   "version": "0.0.1",
-  "homepage": "https://github.com/MikeFielden/ng-sass-boilerplate",
+  "homepage": "https://github.com/MikeFielden/ng-compass-boilerplate",
   
-  "bugs": "https://github.com/MikeFielden/ng-sass-boilerplate/issues",
+  "bugs": "https://github.com/MikeFielden/ng-compass-boilerplate/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:MikeFielden/ng-sass-boilerplate.git"
+    "url": "git@github.com:MikeFielden/ng-compass-boilerplate.git"
   },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-sass": "0.3.0",
-    "grunt-contrib-watch": "0.4.3",
-    
+    "grunt-contrib-compass": "0.2.0",
+
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.5.2",

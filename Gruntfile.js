@@ -4,8 +4,8 @@ module.exports = function ( grunt ) {
    * Load required Grunt tasks. These are installed based on the versions listed
    * in `package.json` when you do `npm install` in this directory.
    */
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-compass');
+
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -177,7 +177,16 @@ module.exports = function ( grunt ) {
       }
     },
 
-    /*SASS ITEMS HERE*/
+    compass: {
+      dist: {
+        options: {
+          sassDir: 'src/sass',
+          cssDir: '<%= distdir %>/assets/<%= pkg.name %>.css',
+          environment: 'production',
+          raw: "preferred_syntax = :scss\n"
+        }
+      }
+    },
 
     /**
      * `jshint` defines the rules of our linter as well as which files we should

@@ -1,6 +1,6 @@
 // Used to config Bower
 {
-  "name": "ng-sass-boilerplate",
+  "name": "ng-compass-boilerplate",
   "version": "0.0.1",
   "devDependencies": {
     
