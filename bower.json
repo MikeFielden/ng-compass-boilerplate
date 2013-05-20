@@ -1,1 +1,8 @@
-// Used to configure Bower
+// Used to config Bower
+{
+  "name": "ng-sass-boilerplate",
+  "version": "0.0.1",
+  "devDependencies": {
+    
+  }
+}
