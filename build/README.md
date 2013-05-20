@@ -1,0 +1,1 @@
+This folder should contain all files that are required to make the app run but NOT libs your application uses.

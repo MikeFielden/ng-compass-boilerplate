@@ -1,8 +1,9 @@
-// Used to config Bower
 {
   "name": "ng-compass-boilerplate",
   "version": "0.0.1",
   "devDependencies": {
-    
+ 		"sass-bootstrap": "~2.3.1",
+ 		"angular-bootstrap": "latest",
+    "angular-ui-utils": "latest"
   }
 }

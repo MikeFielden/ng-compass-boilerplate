@@ -1,3 +1,4 @@
+This repo is based off the popular [ng-boilerplate](https://github.com/joshdmiller/ng-boilerplate) 
 An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 
 ***
@@ -8,8 +9,10 @@ Install Node.js and then:
 
 Install compass
   http://compass-style.org/install/
+  ```sh
   $ gem update --system
   $ gem install compass
+  ```
 
 ```sh
 $ git clone git@github.com:MikeFielden/ng-compass-boilerplate.git
@@ -19,8 +22,6 @@ $ npm install
 $ bower install
 $ grunt watch
 ```
-
-Happy hacking!
 
 ## Purpose
 

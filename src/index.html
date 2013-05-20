@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+  <head>
+    <title>ng-boilerplate</title>
+
+    <!-- your compiles CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/<%= grunt.config.get('pkg.name') %>.css"/>
+
+    <!-- libs.js contains all of the concatenated third-party libraries -->
+    <script type="text/javascript" src="assets/libs.js"></script>
+
+    <!-- this is your compiled, minified application code -->
+    <script type="text/javascript" src="assets/<%= grunt.config.get('pkg.name') %>.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="muted">ng-boilerplate</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li ui-route="/home" ng-class="{active:$uiRoute}">
+                  <a href="#/home"><i class="icon-home"></i>Home</a>
+                </li>
+                <li ui-route="/about" ng-class="{active:$uiRoute}">
+                  <a href="#/about"><i class="icon-info-sign"></i>What is it?</a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
+                    <i class="icon-book"></i>
+                    Read the Docs
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate">
+                    <i class="icon-github-alt"></i>
+                    Github
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate/issues">
+                    <i class="icon-comments"></i>
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ng-view></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <ul class="social">
+            <li><a target="_blank" href="http://gplus.to/mikefielden"><i class="icon-google-plus-sign"></i></a></li>
+            <li><a target="_blank" href="http://twitter.com/Mike_Fielden"><i class="icon-twitter-sign"></i></a></li>
+            <li><a target="_blank" href="http://linkedin.com/in/mikefielden"><i class="icon-linkedin-sign"></i></a></li>
+            <li><a target="_blank" href="http://github.com/MikeFielden/ng-compass-boilerplate"><i class="icon-github-sign"></i></a></li>
+          </ul>
+          
+
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
