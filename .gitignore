@@ -7,3 +7,4 @@ vendor/angular-bootstrap/
 vendor/angular-ui-utils/
 vendor/jquery/
 vendor/sass-bootstrap/
+.sass-cache/

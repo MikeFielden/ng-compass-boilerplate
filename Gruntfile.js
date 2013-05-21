@@ -38,6 +38,8 @@ module.exports = function ( grunt ) {
      */
     pkg: grunt.file.readJSON("package.json"),
 
+    env: grunt.file.readJSON("environment.json"),
+
     /**
      * The banner is the comment that is placed at the top of our compiled 
      * source files. It is first processed as a Grunt template, where the `<%=`
@@ -50,7 +52,6 @@ module.exports = function ( grunt ) {
         ' * <%= pkg.homepage %>\n' +
         ' *\n' +
         ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-        ' * Licensed <%= pkg.licenses.type %> <<%= pkg.licenses.url %>>\n' +
         ' */\n'
     },
 
@@ -180,8 +181,18 @@ module.exports = function ( grunt ) {
       dist: {
         options: {
           sassDir: 'src/sass',
-          cssDir: '<%= distdir %>/assets/<%= pkg.name %>.css',
+          cssDir: '<%= distdir %>/assets/styles/',
           environment: 'production',
+          raw: "preferred_syntax = :scss\n"
+        }
+      },
+
+      dev: {
+        options: {
+          outputStyle: 'compact',
+          sassDir: 'src/sass',
+          cssDir: '<%= distdir %>/assets/styles/',
+          environment: 'development',
           raw: "preferred_syntax = :scss\n"
         }
       }
@@ -341,7 +352,15 @@ module.exports = function ( grunt ) {
        */
       sass: {
         files: [ 'src/**/*.scss' ],
-        tasks: [ 'sass:dev' ]
+        tasks: 'compassCompile'
+      },
+
+      envs: {
+        files: [
+          'environment.json'
+        ],
+
+        tasks: ['build']
       },
 
       /**
@@ -375,7 +394,23 @@ module.exports = function ( grunt ) {
    * The default task is to build.
    */
   grunt.registerTask( 'default', [ 'build' ] );
-  grunt.registerTask( 'build', ['clean', 'html2js', 'jshint', 'karma:continuous', 'concat', 'ngmin:dist', 'uglify', 'index', 'copy'] );
+  grunt.registerTask( 'build', ['clean', 'html2js', 'jshint', 'karma:continuous', 'concat', 'ngmin:dist', 'uglify', 'compassCompile', 'index', 'copy'] );
+
+
+  /**
+   *  Task for general compass items 
+   *  This task will determine which environment you have set and run that task
+   */
+  grunt.registerTask('compassCompile', 'Compiling the sass files', function () {
+    grunt.log.writeln("Current environment: " + grunt.config.get("env").environment);
+
+    if (grunt.config.get("env").environment === "production") {
+      grunt.task.run('compass:dist');
+    } else {
+      grunt.task.run('compass:dev');
+    }
+    
+  });
 
   /**
    * A task to build the project, without some of the slower processes. This is
@@ -390,5 +425,4 @@ module.exports = function ( grunt ) {
   grunt.registerTask( 'index', 'Process index.html template', function () {
     grunt.file.copy('src/index.html', 'dist/index.html', { process: grunt.template.process });
   });
-
 };

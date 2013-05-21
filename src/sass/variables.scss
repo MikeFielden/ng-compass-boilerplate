@@ -3,12 +3,11 @@
  * overwrites that are not specific to components should be maintained.
  */
 
-@import '../../vendor/sass-bootstrap/lib/_variables.scss';
+
 
 
 /**
  * Typography-related.
  */
 
-@sansFontFamily: 'Roboto', sans-serif;
-
+$sansFontFamily: 'Roboto', sans-serif;

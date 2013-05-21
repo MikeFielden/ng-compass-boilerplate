@@ -9,6 +9,7 @@
  * project should be imported as the rest are just wasting space.
  */
 
+@import '../../vendor/sass-bootstrap/lib/_variables.scss';
 @import '../../vendor/sass-bootstrap/lib/_mixins.scss';
 @import '../../vendor/sass-bootstrap/lib/_reset.scss';
 @import '../../vendor/sass-bootstrap/lib/_utilities.scss';
@@ -21,12 +22,6 @@
 @import '../../vendor/sass-bootstrap/lib/_buttons.scss';
 @import '../../vendor/sass-bootstrap/lib/_button-groups.scss';
 @import '../../vendor/sass-bootstrap/lib/_dropdowns.scss';
-
-
-/**
- * And now any configurations for our custom fonts.
- */
-
 
 
 /**
@@ -53,4 +48,4 @@
  * all the submodules and components we are using. 
  */
 
-//@import '../app/home/home.less';
+@import '../app/home/home.scss';
